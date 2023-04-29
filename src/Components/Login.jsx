@@ -16,21 +16,7 @@ const Login = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        axios
-            .post("http://localhost:8000/users/login", data, {
-            })
-            .then(function (response) {
-
-                const userInfromation = {
-                    id: response.data._id,
-                    name: response.data.name,
-                    email: response.data.email,
-                    token: response.data.authToken,
-                    userloggedIn: true,
-                };
-                console.log(userInfromation);
-                dispatch(SET_USER_LOGIN(userInfromation));
-            });
+        dispatch(SET_USER_LOGIN(data));
     };
     const logout = () => {
             dispatch(REMOVE_USER_LOGIN());
